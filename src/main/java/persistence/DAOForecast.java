@@ -1,6 +1,5 @@
 package persistence;
 
-import builder.CurrentDay_Builder;
 import configuration.Singleton_Sql_Connection;
 import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ public class DAOForecast implements DataBaseAccess_Prototype<Forecast,String>{
         Connection connection=null;
         java.sql.Date dateSQL = new java.sql.Date(persistence.getDay().getDate().getTime().getTime());
         try {
-            connection= Singleton_Sql_Connection.getInstance().getConect();
+            connection= Singleton_Sql_Connection.getInstance().getConnect();
             String SQL = "INSERT INTO Pronostico VALUES ('"+dateSQL
                     +"','"+persistence.getLocation().getCity()+"','"+persistence.getLocation().getCountry()+"','"+persistence.getLocation().getRegion()
                     +"',1,1)";// harcode for Atmosphere and Wind Id
@@ -65,7 +64,7 @@ public class DAOForecast implements DataBaseAccess_Prototype<Forecast,String>{
         String dateString="";
 
         try {
-            connection=singleton_sql_connection.getConect();
+            connection=singleton_sql_connection.getConnect();
             String SQL = "select * from Pronostico where nombre_Ciudad like '"+cityKey+"'";
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);

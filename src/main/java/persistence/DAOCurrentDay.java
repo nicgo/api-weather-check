@@ -3,8 +3,6 @@ package persistence;
 import builder.CurrentDay_Builder;
 import configuration.Singleton_Sql_Connection;
 import domain.CurrentDay;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.Calendar;
@@ -24,7 +22,7 @@ public class DAOCurrentDay implements DataBaseAccess_Prototype<CurrentDay,String
         Connection connection=null;
         java.sql.Date dateSQL = new java.sql.Date(persistence.getDate().getTime().getTime());//date is converted to an SQL date
         try {
-            connection= Singleton_Sql_Connection.getInstance().getConect();
+            connection= Singleton_Sql_Connection.getInstance().getConnect();
             String SQL = "INSERT INTO DiaActual (fecha,temp,descripcion) VALUES (?,"+persistence.getTemp()+","+persistence.getIdDescription()+")";
             PreparedStatement stmt = connection.prepareStatement(SQL);
             stmt.setDate(1,dateSQL);
@@ -56,7 +54,7 @@ public class DAOCurrentDay implements DataBaseAccess_Prototype<CurrentDay,String
         CurrentDay currentDay=null;
         Connection connection=null;
         try {
-            connection=singleton_sql_connection.getInstance().getConect();
+            connection=singleton_sql_connection.getInstance().getConnect();
             String SQL = "select fecha,temp,descripcion " +
                     "from DiaActual where fecha='"+dateKey+"'";
             Statement stmt = connection.createStatement();

@@ -3,8 +3,6 @@ package persistence;
 import builder.Wind_Builder;
 import configuration.Singleton_Sql_Connection;
 import domain.Wind;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 
 import java.sql.Connection;
@@ -26,7 +24,7 @@ public class DAOWind implements DataBaseAccess_Prototype<Wind,String> {
     public void inserInto(Wind persistence) throws SQLException {
         Connection connection=null;
         try {
-            connection= Singleton_Sql_Connection.getInstance().getConect();
+            connection= Singleton_Sql_Connection.getInstance().getConnect();
             String SQL = "INSERT INTO Viento (id_viento,direccion,velocidad) VALUES (1,"
                     +persistence.getDirection()+","
                     +persistence.getVelocity()+")";
@@ -56,7 +54,7 @@ public class DAOWind implements DataBaseAccess_Prototype<Wind,String> {
         Connection connection=null;
         Wind wind=null;
         try {
-            connection=singleton_sql_connection.getInstance().getConect();
+            connection=singleton_sql_connection.getInstance().getConnect();
             String SQL = "select direccion, velocidad\n" +
                     "from Viento V join Pronostico P on V.Id_Viento=P.id_Viento\n" +
                     "where P.fecha='"+date+"'";

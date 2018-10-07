@@ -3,8 +3,6 @@ package persistence;
 import builder.Atmosphere_Builder;
 import configuration.Singleton_Sql_Connection;
 import domain.Atmosphere;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,7 +22,7 @@ public class DAOAtmosphere implements DataBaseAccess_Prototype<Atmosphere,String
     public void inserInto(Atmosphere persistence) throws SQLException {
         Connection connection=null;
         try {
-            connection= Singleton_Sql_Connection.getInstance().getConect();
+            connection= Singleton_Sql_Connection.getInstance().getConnect();
             String SQL = "INSERT INTO Atmosfera (humedad,presion,visibilidad,ambiente_asc) VALUES ("
                     +persistence.getHumidity()+","
                     +persistence.getPressure()+","
@@ -57,7 +55,7 @@ public class DAOAtmosphere implements DataBaseAccess_Prototype<Atmosphere,String
         Connection connection=null;
         Atmosphere atmosphere=null;
         try {
-            connection=singleton_sql_connection.getInstance().getConect();
+            connection=singleton_sql_connection.getInstance().getConnect();
             String SQL = "select humedad,presion,visibilidad,ambiente_asc " +
                     "from Atmosfera A join Pronostico P on A.Id_Atmosfera=P.id_Atmosfera " +
                     "where P.fecha='"+date+"'";

@@ -4,26 +4,25 @@ package domain;
  * Created by Nico on 28/9/2016.
  */
 public enum Day {
-    Mon, Tue,Wed,Thu,Fri,Sat,Sun;
+    FRI("Fri"),
+    MON("Mon"),
+    SAT("Sat"),
+    SUN("Sun"),
+    THU("Thu"),
+    TUE("Tue"),
+    WED("Wed");
 
-    public Day getEnum(String day)
-    {
-        Day thisDay=null;
-        switch (day){
-            case "Sun": thisDay=Day.Sun;
-            break;
-            case "Mon": thisDay=Day.Mon;
-                break;
-            case "Tue": thisDay=Day.Tue;
-                break;
-            case "Wed": thisDay=Day.Wed;
-                break;
-            case "Thu": thisDay=Day.Thu;
-                break;
-            case "Fri": thisDay=Day.Fri;
-                break;
-            case "Sat": thisDay=Day.Sat;
-                break;
+    String value;
+
+    Day(String value) {
+    }
+
+    public Day fromValue(String unmappedDay) {
+        Day thisDay = null;
+        for (Day day : Day.values()) {
+            if (day.value.equalsIgnoreCase(unmappedDay)) {
+                thisDay = day;
+            }
         }
         return thisDay;
     }

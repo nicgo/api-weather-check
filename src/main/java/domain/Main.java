@@ -21,7 +21,7 @@ public class Main {
 
         //New connection to DB
         Singleton_Sql_Connection singletonSql_connection = Singleton_Sql_Connection.getInstance();
-        Connection connection= singletonSql_connection.getConect();
+        Connection connection= singletonSql_connection.getConnect();
         System.out.println();
 
 
@@ -198,25 +198,25 @@ public class Main {
                             extDate = calendar.getTime();//extended forecast day calculation
                             switch (calendar.get(Calendar.DAY_OF_WEEK)){//day calculation to set Enum Day
                                 case 1:
-                                    dayExt = Day.Sun;
+                                    dayExt = Day.SUN;
                                     break;
                                 case 2:
-                                    dayExt = Day.Mon;
+                                    dayExt = Day.MON;
                                     break;
                                 case 3:
-                                    dayExt = Day.Tue;
+                                    dayExt = Day.TUE;
                                     break;
                                 case 4:
-                                    dayExt = Day.Wed;
+                                    dayExt = Day.WED;
                                     break;
                                 case 5:
-                                    dayExt = Day.Thu;
+                                    dayExt = Day.THU;
                                     break;
                                 case 6:
-                                    dayExt = Day.Fri;
+                                    dayExt = Day.FRI;
                                     break;
                                 case 7:
-                                    dayExt = Day.Sun;
+                                    dayExt = Day.SUN;
                                     break;
 
                             }

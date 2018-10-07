@@ -8,7 +8,7 @@ public class Atmosphere {
     private float humidity;
     private float pressure;
     private float visibility;
-    private int rising; //changin conditions probabilty
+    private int rising; //changing conditions probability
 
     public Atmosphere(float humidity, float pressure, float visibility, int rising) {
         this.humidity = humidity;

@@ -3,8 +3,6 @@ package persistence;
 import builder.Location_Builder;
 import configuration.Singleton_Sql_Connection;
 import domain.Location;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -27,7 +25,7 @@ public class DAOLocation implements DataBaseAccess_Prototype<Location,String> {
     public void inserInto(Location persistence) throws SQLException {
         Connection connection=null;
         try{
-            connection = singleton_sql_connection.getInstance().getConect();
+            connection = singleton_sql_connection.getInstance().getConnect();
             //writes new country on DB
             try {
 
@@ -93,7 +91,7 @@ public class DAOLocation implements DataBaseAccess_Prototype<Location,String> {
         Location location=null;
         Connection connection=null;
         try {
-            connection=singleton_sql_connection.getInstance().getConect();
+            connection=singleton_sql_connection.getInstance().getConnect();
             String SQL = "select C.nombre_Pais, C.nombre_Region,C.nombre_Ciudad\n" +
                     "from Pais P join Region R on P.nombre_Pais=R.nombre_Pais\n" +
                     "join Ciudad C on R.nombre_Region=C.nombre_Region\n" +

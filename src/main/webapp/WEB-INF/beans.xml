@@ -7,9 +7,10 @@
     <import resource="classpath:META-INF/cxf/cxf.xml"/>
     <context:property-placeholder/>
     <context:annotation-config/>
-    <context:component-scan base-package="configuration,persistence,builder,resources,services" />
+    <context:component-scan base-package="configuration,persistence,builder,resources,services"/>
     <bean class="org.springframework.web.context.support.ServletContextPropertyPlaceholderConfigurer"/>
     <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer"/>
+
     <jaxrs:server id="services" address="/">
         <jaxrs:serviceBeans>
             <bean class="resources.WeatherResource"/>

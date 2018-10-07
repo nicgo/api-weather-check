@@ -5,8 +5,6 @@ import configuration.Singleton_Sql_Connection;
 import domain.Day;
 import domain.ExtendedForecast;
 import domain.Forecast;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,7 +22,7 @@ public class DAOExtendedForecast implements DataBaseTransactionAccess_Prototype<
 
     @Override
     public void inserInto(ExtendedForecast persistence, Forecast reference) throws SQLException {
-        Connection connection=Singleton_Sql_Connection.getInstance().getConect();
+        Connection connection=Singleton_Sql_Connection.getInstance().getConnect();
         try {
             java.sql.Date dateSQL_ext = new java.sql.Date(persistence.getDate().getTime().getTime());
             java.sql.Date dateSQL_reference = new java.sql.Date(reference.getDay().getDate().getTime().getTime());
@@ -77,7 +75,7 @@ return null;
         List<ExtendedForecast>extended_List=new ArrayList<>();
         Connection connection=null;
         try {
-            connection=singleton_sql_connection.getInstance().getConect();
+            connection=singleton_sql_connection.getInstance().getConnect();
             String SQL = "select P.min,P.max,D.descripcion,P.dia,P.fecha from Pronostico_Extendido P\n" +
                     "join Descripcion D on P.descripcion=D.id_descripcion\n" +
                     "where fecha='"+dateKey+"'";
@@ -96,7 +94,7 @@ return null;
                 Day thisDay=null;
                 for (Day days:Day.values()) {
                     if (day.equals(days.name())){
-                        thisDay=days.getEnum(day);
+                        thisDay=days.fromValue(day);
                     }
                 }
 

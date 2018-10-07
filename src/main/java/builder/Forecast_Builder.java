@@ -29,13 +29,13 @@ public class Forecast_Builder {
         this.extendedForecasts= new ArrayList<ExtendedForecast>();
         Calendar ext1= Calendar.getInstance();
         ext1.add(Calendar.DAY_OF_MONTH,1);
-        extendedForecasts.add(new ExtendedForecast(ext1, Day.Sun, 04, 12, "Cloudy"));
+        extendedForecasts.add(new ExtendedForecast(ext1, Day.SUN, 04, 12, "Cloudy"));
         Calendar ext2= Calendar.getInstance();
         ext2.add(Calendar.DAY_OF_MONTH,2);
-        extendedForecasts.add(new ExtendedForecast(ext2, Day.Mon, 04, 12, "Sunny"));
+        extendedForecasts.add(new ExtendedForecast(ext2, Day.MON, 04, 12, "Sunny"));
         Calendar ext3= Calendar.getInstance();
         ext3.add(Calendar.DAY_OF_MONTH,3);
-        extendedForecasts.add(new ExtendedForecast(ext3, Day.Tue, 04, 12, "Partly Cloudy"));
+        extendedForecasts.add(new ExtendedForecast(ext3, Day.TUE, 04, 12, "Partly Cloudy"));
         return this;
     }
 

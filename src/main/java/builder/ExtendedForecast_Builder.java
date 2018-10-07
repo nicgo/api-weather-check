@@ -5,7 +5,6 @@ import domain.ExtendedForecast;
 import org.springframework.stereotype.Component;
 
 import java.util.Calendar;
-import java.util.Date;
 
 @Component
 public class ExtendedForecast_Builder {
@@ -23,7 +22,7 @@ public class ExtendedForecast_Builder {
     public ExtendedForecast_Builder create_Default()
     {
         this.date= Calendar.getInstance();
-        this.day=Day.Fri;
+        this.day=Day.FRI;
         this.low=12;
         this.high=29;
         this.description="Hazy";

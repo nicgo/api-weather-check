@@ -18,32 +18,32 @@ public class CurrentDay {
         this.description = description;
     }
 
-    public int getIdDescription(){
-        int descrip=0;
+    public int getIdDescription() {
+        int descrip = 0;
         switch (description) {
             case "Sunny":
-                descrip =1;
+                descrip = 1;
                 break;
             case "Hazy":
-                descrip =2;
+                descrip = 2;
                 break;
             case "Partly Cloudy":
-                descrip =3;
+                descrip = 3;
                 break;
             case "Cloudy":
-                descrip =4;
+                descrip = 4;
                 break;
             case "Rainy":
-                descrip =5;
+                descrip = 5;
                 break;
             case "Stormy":
-                descrip =6;
+                descrip = 6;
                 break;
             case "Snowy":
-                descrip =7;
+                descrip = 7;
                 break;
             case "Windy":
-                descrip =8;
+                descrip = 8;
                 break;
         }
         return descrip;

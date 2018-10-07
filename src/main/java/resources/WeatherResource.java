@@ -28,10 +28,10 @@ public class WeatherResource {//This resources returns the entity Forecast from 
     @GET
     @Path("/get/{city}/{region}")
     @Produces("text/plain")
-    public String getYahooForecast(@PathParam("city") String city,@PathParam("region") String region) throws JSONException {
+    public String getYahooForecast(@PathParam("city") String city, @PathParam("region") String region) throws JSONException {
 
-        String URL=forecastFromYahooAPI_service.getURL(city,region);
-        JSONObject jsonObject=forecastFromYahooAPI_service.getJSONResponse(URL);
+        String URL = forecastFromYahooAPI_service.getURL(city, region);
+        JSONObject jsonObject = forecastFromYahooAPI_service.getJSONResponse(URL);
 
         return forecastFromYahooAPI_service.createForecastByJSON(jsonObject);
 

@@ -7,7 +7,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -98,7 +97,7 @@ public class ForecastProxy {
             Day dayExtFore=null;
             for (Day days:Day.values()) {
                 if (day.equals(days.name())){
-                    dayExtFore=days.getEnum(day);
+                    dayExtFore=days.fromValue(day);
                 }
             }
 

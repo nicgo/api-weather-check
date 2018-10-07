@@ -13,8 +13,7 @@ public class Atmosphere_Builder {
     private int rising;
 
     public Atmosphere create() {
-        Atmosphere atmosphere=new Atmosphere(humidity,pressure,visibility,rising);
-        return atmosphere;
+        return new Atmosphere(humidity,pressure,visibility,rising);
     }
 
     public Atmosphere_Builder create_Default() {

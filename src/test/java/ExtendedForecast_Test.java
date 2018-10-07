@@ -1,14 +1,10 @@
 import builder.ExtendedForecast_Builder;
-import builder.Forecast_Builder;
 import domain.Day;
 import domain.ExtendedForecast;
-import domain.Forecast;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
-import persistence.DAOExtendedForecast;
 
-import java.sql.SQLException;
 import java.util.Calendar;
 
 /**
@@ -22,7 +18,7 @@ public class ExtendedForecast_Test {
         ExtendedForecast extendedForecast = extendedForecast_builder.create();
 
         Assert.assertThat(extendedForecast.getDate().get(Calendar.DAY_OF_MONTH), Is.is(Calendar.getInstance().get(Calendar.DAY_OF_MONTH)));
-        Assert.assertThat(extendedForecast.getDay(),Is.is(Day.Fri));
+        Assert.assertThat(extendedForecast.getDay(),Is.is(Day.FRI));
         Assert.assertEquals(12,(long)extendedForecast.getLow());
         Assert.assertEquals(29,(long)extendedForecast.getHigh());
         Assert.assertEquals("Hazy",extendedForecast.getDescription());

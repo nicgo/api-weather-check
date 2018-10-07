@@ -1,6 +1,5 @@
 package configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -16,38 +15,28 @@ public class Singleton_Sql_Connection {
 
 
     private static Singleton_Sql_Connection singletonSql_connection = null;
-    String connectionUrl = null;
-    Connection conect = null;
+    private String connectionUrl;
+    private Connection connect = null;
 
+    private Singleton_Sql_Connection() {
+        connectionUrl = "jdbc:sqlserver://;database=DB_Pronostico;integratedSecurity=true;";
 
-
-
-    private Singleton_Sql_Connection(){
-
-        connectionUrl="jdbc:sqlserver://;database=DB_Pronostico;integratedSecurity=true;";
-
-            try {
-                conect = DriverManager.getConnection(connectionUrl);
-                System.out.println("Conected to DB!");
-            }
-            catch (SQLException ex)
-            {
-                System.out.println("Error! It's not possible connect to DB");
-         }
+        try {
+            connect = DriverManager.getConnection(connectionUrl);
+            System.out.println("Conected to DB!");
+        } catch (SQLException ex) {
+            System.out.println("Error! It's not possible connect to DB");
+        }
     }
 
     public static Singleton_Sql_Connection getInstance() throws SQLException {
-        if (singletonSql_connection ==null)
-        {
+        if (singletonSql_connection == null || singletonSql_connection.getConnect().isClosed()) {
             singletonSql_connection = new Singleton_Sql_Connection();
         }
-        else if (singletonSql_connection.getConect().isClosed()) {
-            singletonSql_connection = new Singleton_Sql_Connection();
-        }
-        return singletonSql_connection;}
+        return singletonSql_connection;
+    }
 
-
-    public Connection getConect() {
-        return conect;
+    public Connection getConnect() {
+        return connect;
     }
 }
